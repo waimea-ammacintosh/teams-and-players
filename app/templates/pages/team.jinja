@@ -16,25 +16,31 @@
 
 {% block content %}
 
-    <h1>A Single Thing...</h1>
+    <h1>{{ team.name }}.</h1>
 
 
     <article>
 
         <header>
-            <h3>{{ thing.name }}</h3>
+            <h3>{{ team.name }}</h3>
         </header>
+    </article>
 
-        <p>Price: <strong>${{ thing.price }}</strong></p>
+    <article>
+        <h3>Players</h3>
+        {% for player in players %}
+        <p><strong>{{ player.name }}</strong></p>
+        {% endfor %}
+    </article>
 
-        <footer>
-            <a href="/delete/{{ thing.id }}" onclick="return confirm('Really delete?');">Delete</a>
-        </footer>
-
+    <article>
+        <h3>Website</h3>
+        <p><a href="#"> <strong>{{ team.website }}</strong></a></p>
     </article>
 
 
-    <a role="button" href="/things">Back to Thing List</a>
+
+    <a role="button" href="/">Back to Home</a>
 
 {% endblock %}
 
