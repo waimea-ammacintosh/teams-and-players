@@ -68,10 +68,10 @@ def show_one_thing(code):
         # Get the thing details from the DB
         sql = """SELECT
                     players.name AS player_name,
-                    players.notes,
+                    players.notes AS player_notes,
                     teams.name AS team_name,
-                    teams.website,
-                    teams.code
+                    teams.website AS team_website,
+                    teams.code AS code
                 FROM
                     players
                 JOIN teams ON players.team = teams.code
@@ -80,14 +80,13 @@ def show_one_thing(code):
                     players.name ASC;"""
         params = [code]
         result = client.execute(sql, params)
+        print (result)
 
         # Did we get a result?
         if result.rows:
             # yes, so show it on the page
-            team = result.rows[0]
-            players = result.columns[players.name]
-            website = team['website']
-            return render_template("pages/team.jinja", team=team, players=players, website=website)
+            players = result.rows
+            return render_template("pages/team.jinja", players=players)
 
         else:
             # No, so show error

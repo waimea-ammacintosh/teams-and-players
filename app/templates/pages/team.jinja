@@ -16,26 +16,26 @@
 
 {% block content %}
 
-    <h1>{{ team.name }}.</h1>
+    <h1>{{ players.team_name }}.</h1>
 
 
     <article>
 
         <header>
-            <h3>{{ team.name }}</h3>
+            <h3>{{ players.team_name }}</h3>
         </header>
     </article>
 
     <article>
         <h3>Players</h3>
         {% for player in players %}
-        <p><strong>{{ player.name }}</strong></p>
+        <p><strong>{{ players.player_name }}</strong>  - {{ players.player_notes }}</p>
         {% endfor %}
     </article>
 
     <article>
         <h3>Website</h3>
-        <p><a href="#"> <strong>{{ team.website }}</strong></a></p>
+        <p><a href="#"> <strong>{{ players.team_website }}</strong></a></p>
     </article>
 
 
